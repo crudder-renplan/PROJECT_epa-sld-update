@@ -9,10 +9,27 @@ dependencies:
   - cookiecutter
   - jupyterlab
   - nodejs
+  - dask
+  - pygeos
+  - geopandas
+  - pandas
+  - git
+  - sphinx
   - pip
   - conda-forge::pyarrow
   - python=3.7
   - python-dotenv
+  - r-tidyverse
+  - r-sf
+  - r-tmap
+  - r-devtools
+  - esri::r-arcgisbinding
   - pip:
+#    - -e git+https://github.com/geopandas/dask-geopandas#egg=epa-sld-update
+    - -e ../../packages/emma
+    - -e ../../packages/rputils
+    - -e ../../packages/roxy
+    - -e ../../packages/rpio
+    - esridump
     - azure-storage-blob
     - boto3

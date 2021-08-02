@@ -19,4 +19,4 @@ A copy of the license is available in the repository's
 LICENSE file.
 """
 
-import renplan_project
+import epa-sld-update

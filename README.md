@@ -1,35 +1,36 @@
-# renplan-project
+# EPA Fiscal Impact
 
-EPA Access to Jobs
+EPA Fiscal Impact
 
 ## Requirements
 
  * ArcGIS Pro 2.7 (soft requirement)
+ * [R - statistical software](https://cran.r-project.org/bin/windows/base/)
+ * [rtools(4.0 +)](https://cran.r-project.org/bin/windows/Rtools/) - download version approp for your machine (32/64 bit)
  * [Conda (Anaconda or miniconda)](https://docs.conda.io/projects/conda/en/latest/user-guide/install/windows.html)
- * [Cookiecutter](http://cookiecutter.readthedocs.org/en/latest/installation.html) >= 1.4.0
 
-``` cmd
-> conda install -c conda-forge cookiecutter
-```
-
-## To start a new project, run:
-
-``` cmd
-> cookiecutter https://github.com/renaissanceplanning/renplan-esri-cookiecutter
-```
-
-## Next
+## Setup
 
 1 - Clone this repo.
 
-2 - Create an environment with the requirements.
+2 - Install R and rtools
+
+3 - Create an environment with the requirements.
     
 ``` cmd
 > make env
 ```
+* environment should be activated
 
-3 - Explore - If you are more into Python, a good place to start is `jupyter lab` from the root of the project, and 
-look in the `./notebooks` directory. If GIS is more your schtick, open the project `./arcgis/renplan-project.aprx`.
+4 - Install Dask-Geopandas
+```cmd
+pip install git+git://github.com/geopandas/dask-geopandas.git
+```
+
+5 - Install omxr via rtools
+```cmd
+devtools::install_github("gregmacfarlane/omxr")
+```
 
 ## Using Make - common commands
 
@@ -38,12 +39,11 @@ number of commands using the make command pattern.
 
 - `make env` - builds the Conda environment with all the name and dependencies from `environment_dev.yml` and installs the local project package `renplan_project` using the command `python -m pip install -e ./src/src/renplan_project` so you can easily test against the package as you are developing it.
 
+- `make env_remove` - removes the Conda environment from your machine in the event the environment needs have changed
 
 - `make env_clone` - designed for environments using the default Conda instance installed with ArcGIS Pro. It is similar to `make env`, except this command clones the `arcgispro-py3` environment. Otherwise, it still installs the packages listed in `environment_dev.yml` and installs the local package using `pip` as described above.
 
-
 - `make docs` - builds Sphinx docs based on files in `./docsrc/source` and places them in `./docs`. This enables easy publishing in the master branch in GitHub.
-
 
 - `make test` - activates the environment created by the `make env` or `make env_clone` and runs all the tests in the `./testing` directory using PyTest. Alternately, if you prefer to use [TOX](https://tox.readthedocs.io) for testing (my preference), there is a `tox.ini` file included as well. The dependencies (`tox` and `tox-conda`) for using TOX are included in the default requirements. By default, the TOX file creates an environment from the `environment.yml` file using much fewer dependencies than the `*_dev.yml` files.
 

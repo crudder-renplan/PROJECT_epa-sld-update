@@ -25,8 +25,8 @@
 
 SETLOCAL
 SET PROJECT_DIR=%cd%
-SET PROJECT_NAME=renplan-project
-SET SUPPORT_LIBRARY = renplan_project
+SET PROJECT_NAME=epa_update
+SET SUPPORT_LIBRARY = epa_update
 SET ENV_NAME=epa_update
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -56,8 +56,11 @@ GOTO %1
 :env
     ENDLOCAL & (
 
+        :: install mamba for faster environment solves
+        CALL conda install -c conda-forge mamba
+
         :: Create new environment from environment file
-        CALL conda env create -f environment_dev.yml
+        CALL mamba env create -f environment.yml
 
         :: Install the local package in development (experimental) mode
         CALL python -m pip install -e .

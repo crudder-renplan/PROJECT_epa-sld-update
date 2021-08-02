@@ -5,7 +5,7 @@
 #################################################################################
 
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-PROJECT_NAME = renplan-project
+PROJECT_NAME = epa-sld-update
 ENV_NAME = epa_update
 
 #################################################################################
@@ -25,7 +25,8 @@ clean:
 
 ## Build the local environment from the environment file
 env:
-	conda env create -f environment_dev_nix.yml
+    conda install -c conda-forge mamba
+	mamba env create -f environment.yml
 	conda run -n $(PROJECT_NAME) python -m pip install -e .
 	@echo ">>> New conda environment, $(ENV_NAME), created. Activate with:\n- conda activate $(ENV_NAME)"
 
