@@ -1,0 +1,18 @@
+name: epa_update
+
+channels:
+  - esri
+  - conda-forge
+
+dependencies:
+  - esri::arcgis
+  - cookiecutter
+  - jupyterlab
+  - nodejs
+  - pip
+  - conda-forge::pyarrow
+  - python=3.7
+  - python-dotenv
+  - pip:
+    - azure-storage-blob
+    - boto3
