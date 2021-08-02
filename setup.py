@@ -4,7 +4,7 @@ with open('README.md', 'r') as readme:
     long_description = readme.read()
 
 setup(
-    name='renplan_project',
+    name='epa-sld-update',
     package_dir={"": "src"},
     packages=find_packages('src'),
     version='0.0.0',
